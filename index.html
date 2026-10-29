@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Playlist Cafe Antipolo | Coffee, Music &amp; City Views</title>
+  <meta name="description" content="Playlist Cafe Antipolo: an overlooking glass cafe with specialty coffee, all-day comfort food, live acoustic nights and views of the Metro Manila skyline. Open daily 10am to 12mn.">
+  <meta name="theme-color" content="#111111">
+  <meta property="og:title" content="Playlist Cafe Antipolo">
+  <meta property="og:description" content="Good coffee, good music and the best view in Antipolo. Open daily 10am – 12mn.">
+  <meta property="og:image" content="playlist-cover-2.jpg">
+  <link rel="icon" href="playlist_logo.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="brand" aria-label="Playlist Cafe, back to top">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <span class="brand__name">Playlist <em>Cafe</em></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#experience">Experience</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Visit</a>
+      </nav>
+
+      <div class="nav__right">
+        <span class="nav__status"><span class="live-dot" data-status-dot></span><span data-status-short>Open daily</span></span>
+        <a href="tel:+639175018816" class="btn btn--dark btn--sm nav__cta"><i data-lucide="phone"></i><span>Reserve</span></a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <nav aria-label="Mobile">
+      <a href="#about"><span>01</span>About</a>
+      <a href="#menu"><span>02</span>Menu</a>
+      <a href="#experience"><span>03</span>Experience</a>
+      <a href="#gallery"><span>04</span>Gallery</a>
+      <a href="#visit"><span>05</span>Visit</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a href="tel:+639175018816" class="btn btn--light"><i data-lucide="phone"></i>Call 0917 501 8816</a>
+      <div class="mobile-menu__social">
+        <a href="https://www.facebook.com/playlistantipolo/" target="_blank" rel="noopener" class="btn btn--ghost-light"><i data-lucide="facebook"></i> Facebook</a>
+        <a href="https://www.instagram.com/playlistcafeantipolo/" target="_blank" rel="noopener" class="btn btn--ghost-light"><i data-lucide="instagram"></i> Instagram</a>
+      </div>
+      <p><i data-lucide="clock"></i> Open daily · 10am – 12mn</p>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ================= INTRO ================= -->
+    <section class="intro" id="top">
+      <div class="container intro__grid">
+        <div class="intro__copy">
+          <p class="chip" data-intro><i data-lucide="map-pin"></i> Antipolo, Rizal · Overlooking Glass Cafe</p>
+          <h1 class="intro__title" data-intro>Good coffee, good music &amp; <em class="serif">the best view</em> in Antipolo.</h1>
+          <p class="intro__lead" data-intro>Specialty coffee, all-day comfort food and live acoustic nights, with the Metro Manila skyline right outside the glass.</p>
+
+          <div class="intro__actions" data-intro>
+            <a href="#menu" class="btn btn--dark btn--lg">View the menu <i data-lucide="arrow-right"></i></a>
+            <a href="https://www.google.com/maps/place/Playlist+Cafe+Antipolo/@14.576792,121.1612741,17z/data=!4m15!1m8!3m7!1s0x3397c7d506721d87:0xfaee585535a344b0!2sPlaylist+Cafe+Antipolo!8m2!3d14.5767551!4d121.1613602!10e1!16s%2Fg%2F11rgcqfll9!3m5!1s0x3397c7d506721d87:0xfaee585535a344b0!8m2!3d14.5767551!4d121.1613602!16s%2Fg%2F11rgcqfll9?entry=ttu&amp;g_ep=EgoyMDI2MTAyNy4wIKXMDSoASAFQAw%3D%3D" class="btn btn--outline btn--lg" target="_blank" rel="noopener"><i data-lucide="navigation"></i> Get directions</a>
+          </div>
+
+          <ul class="quick" data-intro>
+            <li>
+              <span class="quick__icon"><i data-lucide="clock"></i></span>
+              <div><small>Open daily</small><strong>10:00 AM – 12 MN</strong></div>
+            </li>
+            <li>
+              <span class="quick__icon"><i data-lucide="map-pin"></i></span>
+              <div><small>Find us</small><strong>Grand Heights, Antipolo</strong></div>
+            </li>
+            <li>
+              <span class="quick__icon"><i data-lucide="phone"></i></span>
+              <div><small>Reservations</small><strong><a href="tel:+639175018816">0917 501 8816</a></strong></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="intro__visual" data-intro-visual>
+          <figure class="intro__photo">
+            <img src="playlist-cover-2.jpg" alt="Guests on the Playlist Cafe terrace overlooking the Metro Manila skyline at sunset" fetchpriority="high">
+          </figure>
+          <figure class="intro__photo intro__photo--small">
+            <img src="playlist-drinks.-2jpg.jpg" alt="Playlist Cafe hot coffee cups">
+          </figure>
+          <div class="status-card">
+            <span class="live-dot" data-status-dot></span>
+            <div>
+              <small>Manila time · <span id="manilaTime">--:--</span></small>
+              <strong id="openStatus">Open daily · 10am – 12mn</strong>
+            </div>
+          </div>
+          <div class="est-badge" aria-hidden="true">
+            <svg class="ring-text" viewBox="0 0 120 120"><defs><path id="estCircle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#estCircle" textLength="272">EST. 2018 ✦ ANTIPOLO ✦ </textPath></text></svg>
+            <i data-lucide="coffee"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MARQUEE ================= -->
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon__track">
+        <div class="ribbon__group">
+          <span><i data-lucide="coffee"></i>Specialty Coffee</span>
+          <span><i data-lucide="sunset"></i>Skyline Views</span>
+          <span><i data-lucide="music"></i>Live Acoustic Nights</span>
+          <span><i data-lucide="egg"></i>All-Day Breakfast</span>
+          <span><i data-lucide="drumstick"></i>Wings &amp; Pasta</span>
+          <span><i data-lucide="moon"></i>Open Till Midnight</span>
+        </div>
+        <div class="ribbon__group">
+          <span><i data-lucide="coffee"></i>Specialty Coffee</span>
+          <span><i data-lucide="sunset"></i>Skyline Views</span>
+          <span><i data-lucide="music"></i>Live Acoustic Nights</span>
+          <span><i data-lucide="egg"></i>All-Day Breakfast</span>
+          <span><i data-lucide="drumstick"></i>Wings &amp; Pasta</span>
+          <span><i data-lucide="moon"></i>Open Till Midnight</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about section" id="about">
+      <div class="container">
+        <p class="kicker" data-reveal><span class="kicker__no">01</span> Our story</p>
+        <p class="statement" id="statement">Perched on the hills of Antipolo, Playlist Cafe turns the whole Metro Manila skyline into your backdrop. Great coffee by day, golden sunsets by evening, and city lights until midnight.</p>
+
+        <div class="about__grid">
+          <div class="about__collage">
+            <figure class="about__img about__img--a" data-clip>
+              <img src="playlist-drinks.-4.jpg" alt="Two iced coffees raised in front of the Playlist Cafe building" loading="lazy" data-speed="-6">
+            </figure>
+            <figure class="about__img about__img--b" data-clip>
+              <img src="playlist-highlighted.jpg" alt="Live acoustic duo performing at the cafe" loading="lazy">
+            </figure>
+          </div>
+
+          <div class="about__copy">
+            <h2 class="h2" data-reveal>Your favorite spot <em class="serif">above the city.</em></h2>
+            <p class="muted" data-reveal>We're the overlooking glass cafe on Sierra Madre St., Grand Heights. Bright and breezy at noon, glowing at golden hour, and cozy after dark. We pour espresso classics and house signatures, and cook hearty Filipino and comfort favorites, all set to a good playlist.</p>
+
+            <ul class="perks">
+              <li data-reveal>
+                <span class="perks__icon"><i data-lucide="coffee"></i></span>
+                <div><h3>Coffee &amp; signatures</h3><p>Hot and iced classics plus our Ube Series.</p></div>
+              </li>
+              <li data-reveal>
+                <span class="perks__icon"><i data-lucide="mountain"></i></span>
+                <div><h3>Skyline views</h3><p>Glass walls and an open-air terrace.</p></div>
+              </li>
+              <li data-reveal>
+                <span class="perks__icon"><i data-lucide="mic"></i></span>
+                <div><h3>Live music</h3><p>Acoustic sets from local artists.</p></div>
+              </li>
+              <li data-reveal>
+                <span class="perks__icon"><i data-lucide="utensils"></i></span>
+                <div><h3>Food all day</h3><p>Breakfast, steaks, wings and pasta.</p></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat" data-reveal><strong><span data-count="2018">2018</span></strong><span>Serving since</span></div>
+          <div class="stat" data-reveal><strong><span data-count="14">14</span><small>hrs</small></strong><span>Open every day</span></div>
+          <div class="stat" data-reveal><strong><span data-count="7">7</span><small>days</small></strong><span>A week, no day off</span></div>
+          <div class="stat" data-reveal><strong><span data-count="60">60</span><small>+</small></strong><span>Items on the menu</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NOW PLAYING ================= -->
+    <section class="np section" id="now-playing">
+      <div class="container np__grid">
+        <div class="np__art">
+          <div class="vinyl" id="npVinyl" aria-hidden="true"><span class="vinyl__label"></span></div>
+          <figure class="np__cover">
+            <img src="playlist-drinks.jpg" alt="Ube Latte and Dirty Ube Latte" loading="lazy">
+          </figure>
+        </div>
+
+        <div class="np__copy">
+          <p class="kicker kicker--light" data-reveal><span class="eq"><span></span><span></span><span></span></span> Now playing · New favourites</p>
+          <h2 class="h2 h2--light" data-reveal>The <em class="serif">Ube</em> Series</h2>
+          <p class="muted-light" data-reveal>Our take on a Filipino classic: authentic ube halaya, layered and finished with a soft ube cloud foam.</p>
+
+          <ol class="tracks">
+            <li class="track" data-reveal>
+              <span class="track__no">01</span>
+              <div class="track__info"><h3>Ube Latte</h3><p>Creamy milk, authentic ube halaya and ube cloud foam.</p></div>
+              <span class="track__price">₱215</span>
+            </li>
+            <li class="track" data-reveal>
+              <span class="track__no">02</span>
+              <div class="track__info"><h3>Dirty Ube Latte <span class="tag-new">New</span></h3><p>Sagada Arabica, authentic ube halaya and ube cloud foam.</p></div>
+              <span class="track__price">₱245</span>
+            </li>
+          </ol>
+
+          <button class="btn btn--light" data-open="coffee">See all drinks <i data-lucide="arrow-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MENU SHOWCASE ================= -->
+    <section class="menu section" id="menu">
+      <div class="container">
+        <div class="menu__head">
+          <div>
+            <p class="kicker" data-reveal><span class="kicker__no">02</span> The menu</p>
+            <h2 class="h2" data-reveal>Guest <em class="serif">favorites.</em></h2>
+          </div>
+          <div class="filters" role="group" aria-label="Filter menu highlights" data-reveal>
+            <button class="filter is-active" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter" data-filter="coffee" aria-pressed="false"><i data-lucide="coffee"></i>Coffee</button>
+            <button class="filter" data-filter="drinks" aria-pressed="false"><i data-lucide="cup-soda"></i>Shakes</button>
+            <button class="filter" data-filter="food" aria-pressed="false"><i data-lucide="utensils"></i>Food</button>
+          </div>
+        </div>
+
+        <div class="bento" id="bento">
+          <button class="dish dish--xl" data-cat="coffee" data-open="coffee">
+            <img src="playlist-drinks.-4.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="coffee"></i>Most ordered</span>
+              <span class="dish__name">Iced Lattes</span>
+              <span class="dish__desc">Spanish, French, Macadamia &amp; Caramel Macchiato in 16 or 22oz.</span>
+              <span class="dish__price">from ₱130</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+
+          <button class="dish dish--tall dish--crop" data-cat="coffee" data-open="coffee">
+            <img src="playlist-drinks.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="sparkles"></i>New</span>
+              <span class="dish__name">Dirty Ube Latte</span>
+              <span class="dish__desc">Sagada Arabica meets ube halaya.</span>
+              <span class="dish__price">₱245</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+
+          <button class="dish" data-cat="food" data-open="breakfast">
+            <img src="images/menu/breakfast.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="sun"></i>All-day breakfast</span>
+              <span class="dish__name">Beef Tapa &amp; more</span>
+              <span class="dish__desc">With egg, garlic rice &amp; iced tea.</span>
+              <span class="dish__price">from ₱220</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+
+          <button class="dish dish--crop" data-cat="drinks" data-open="drinks">
+            <img src="playlist-drinks.-5.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="cup-soda"></i>Milkshakes</span>
+              <span class="dish__name">Oreo, Salted Caramel &amp; more</span>
+              <span class="dish__desc">8 flavors in 16 or 22oz.</span>
+              <span class="dish__price">from ₱145</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+
+          <button class="dish dish--wide" data-cat="food" data-open="mains">
+            <img src="images/menu/salpicao.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="star"></i>Top hits</span>
+              <span class="dish__name">Beef Salpicao</span>
+              <span class="dish__desc">Garlicky cubed sirloin with mashed potato or rice.</span>
+              <span class="dish__price">₱390</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+
+          <button class="dish" data-cat="food" data-open="wings">
+            <img src="images/menu/wings.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="drumstick"></i>Wings</span>
+              <span class="dish__name">On the Wings! of Love</span>
+              <span class="dish__desc">5 flavors, from Salted Egg to Wild Buffalo.</span>
+              <span class="dish__price">from ₱280</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+
+          <button class="dish" data-cat="drinks" data-open="drinks">
+            <img src="playlist-drinks.-3.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="leaf"></i>Matcha</span>
+              <span class="dish__name">Matcha Green Tea</span>
+              <span class="dish__desc">Earthy, creamy, made for sunny days.</span>
+              <span class="dish__price">from ₱165</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+
+          <button class="dish" data-cat="food" data-open="pasta">
+            <img src="images/menu/lasagna.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="chef-hat"></i>Pasta</span>
+              <span class="dish__name">Baked Lasagna &amp; more</span>
+              <span class="dish__desc">With garlic bread &amp; iced tea.</span>
+              <span class="dish__price">₱280</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+
+          <button class="dish" data-cat="food" data-open="bites">
+            <img src="images/menu/sandwich.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="sandwich"></i>Sandwiches</span>
+              <span class="dish__name">Monte Cristo &amp; Club</span>
+              <span class="dish__desc">With chips and coffee or iced tea.</span>
+              <span class="dish__price">from ₱220</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+
+          <button class="dish dish--wide" data-cat="coffee" data-open="coffee">
+            <img src="playlist-drinks.-2jpg.jpg" alt="" loading="lazy">
+            <span class="dish__body">
+              <span class="dish__tag"><i data-lucide="coffee"></i>Hot coffee</span>
+              <span class="dish__name">Americano to Mocha</span>
+              <span class="dish__desc">9 classics in 8 or 12oz.</span>
+              <span class="dish__price">from ₱100</span>
+            </span>
+            <span class="dish__go"><i data-lucide="arrow-up-right"></i></span>
+          </button>
+        </div>
+
+        <div class="menu-cta" data-reveal>
+          <div class="menu-cta__text">
+            <span class="menu-cta__icon"><i data-lucide="book-open"></i></span>
+            <div>
+              <h3>See the full menu</h3>
+              <p>All 60+ items with prices, from all-day breakfast to sharing plates for the barkada.</p>
+            </div>
+          </div>
+          <div class="menu-cta__actions">
+            <button class="btn btn--dark" data-open="coffee">Full menu <i data-lucide="arrow-right"></i></button>
+            <button class="btn btn--outline" id="viewBoards"><i data-lucide="images"></i> Menu boards</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="exp section" id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker" data-reveal><span class="kicker__no">03</span> The experience</p>
+            <h2 class="h2" data-reveal>More than a <em class="serif">coffee run.</em></h2>
+          </div>
+          <p class="muted section-head__text" data-reveal>Quiet dates, big celebrations, or a sunset you don't want to miss. Here's how guests spend their time with us.</p>
+        </div>
+
+        <div class="exp__grid">
+          <article class="moment" data-reveal>
+            <figure class="moment__img"><img src="playlist-highlighted-2.jpg" alt="Couple watching the sunset" loading="lazy"></figure>
+            <span class="moment__icon"><i data-lucide="sunset"></i></span>
+            <h3>Golden hour</h3>
+            <p>Grab a seat by the railing. The sun sets right behind the Manila skyline.</p>
+          </article>
+          <article class="moment" data-reveal>
+            <figure class="moment__img"><img src="playlist-highlighted.jpg" alt="Live acoustic duo performing" loading="lazy"></figure>
+            <span class="moment__icon"><i data-lucide="mic"></i></span>
+            <h3>Acoustic nights</h3>
+            <p>Local artists, warm lights and a view that sounds as good as it looks.</p>
+          </article>
+          <article class="moment" data-reveal>
+            <figure class="moment__img"><img src="playlist-highlighted-4.jpg" alt="Proposal set-up overlooking the city lights" loading="lazy"></figure>
+            <span class="moment__icon"><i data-lucide="gem"></i></span>
+            <h3>Proposals &amp; celebrations</h3>
+            <p>Planning a big question or an anniversary? Call us and we'll help set the scene.</p>
+          </article>
+          <article class="moment" data-reveal>
+            <figure class="moment__img"><img src="playlist-cover.jpg" alt="Candle-lit table for two with city lights" loading="lazy"></figure>
+            <span class="moment__icon"><i data-lucide="wine"></i></span>
+            <h3>Candle-lit dinners</h3>
+            <p>When the city lights come on, the cafe becomes one of Antipolo's coziest dinner spots.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section class="gallery section" id="gallery">
+      <div class="container gallery__head">
+        <div>
+          <p class="kicker kicker--light" data-reveal><span class="kicker__no">04</span> Gallery</p>
+          <h2 class="h2 h2--light" data-reveal>Moments on <em class="serif">repeat.</em></h2>
+        </div>
+        <div class="social-links" data-reveal>
+          <a class="ig-link" href="https://www.facebook.com/playlistantipolo/" target="_blank" rel="noopener"><i data-lucide="facebook"></i> Playlist Cafe Antipolo</a>
+          <a class="ig-link" href="https://www.instagram.com/playlistcafeantipolo/" target="_blank" rel="noopener"><i data-lucide="instagram"></i> @playlistcafeantipolo</a>
+        </div>
+      </div>
+
+      <div class="reel" id="reelA"></div>
+      <div class="reel reel--reverse" id="reelB"></div>
+    </section>
+
+    <!-- ================= VISIT ================= -->
+    <section class="visit section" id="visit">
+      <div class="container visit__grid">
+        <div class="visit__card">
+          <p class="kicker" data-reveal><span class="kicker__no">05</span> Visit us</p>
+          <h2 class="h2" data-reveal>Your table with a view <em class="serif">is waiting.</em></h2>
+
+          <ul class="contact">
+            <li data-reveal>
+              <span class="contact__icon"><i data-lucide="map-pin"></i></span>
+              <div><small>Address</small><p>Blk 16 Lt 18, Sierra Madre St., Grand Heights Subd., Antipolo, Rizal 1870</p></div>
+            </li>
+            <li data-reveal>
+              <span class="contact__icon"><i data-lucide="phone"></i></span>
+              <div><small>Call or text</small><p><a href="tel:+639175018816">0917 501 8816</a></p></div>
+            </li>
+            <li data-reveal>
+              <span class="contact__icon"><i data-lucide="mail"></i></span>
+              <div><small>Email</small><p><a href="mailto:playlistcafeantipolo@gmail.com">playlistcafeantipolo@gmail.com</a></p></div>
+            </li>
+            <li data-reveal>
+              <span class="contact__icon"><i data-lucide="facebook"></i></span>
+              <div><small>Message us on Facebook</small><p><a href="https://www.facebook.com/playlistantipolo/" target="_blank" rel="noopener">facebook.com/playlistantipolo</a></p></div>
+            </li>
+          </ul>
+
+          <div class="hours" data-reveal>
+            <div class="hours__head"><i data-lucide="clock"></i><span>Store hours</span><span class="hours__badge" id="hoursBadge">Open daily</span></div>
+            <ul class="hours__days" id="hoursDays">
+              <li data-day="1">Mon</li><li data-day="2">Tue</li><li data-day="3">Wed</li><li data-day="4">Thu</li><li data-day="5">Fri</li><li data-day="6">Sat</li><li data-day="0">Sun</li>
+            </ul>
+            <p class="hours__time">10:00 AM <i data-lucide="arrow-right"></i> 12:00 MN</p>
+          </div>
+
+          <div class="visit__actions" data-reveal>
+            <a href="https://www.google.com/maps/place/Playlist+Cafe+Antipolo/@14.576792,121.1612741,17z/data=!4m15!1m8!3m7!1s0x3397c7d506721d87:0xfaee585535a344b0!2sPlaylist+Cafe+Antipolo!8m2!3d14.5767551!4d121.1613602!10e1!16s%2Fg%2F11rgcqfll9!3m5!1s0x3397c7d506721d87:0xfaee585535a344b0!8m2!3d14.5767551!4d121.1613602!16s%2Fg%2F11rgcqfll9?entry=ttu&amp;g_ep=EgoyMDI2MTAyNy4wIKXMDSoASAFQAw%3D%3D" class="btn btn--dark" target="_blank" rel="noopener"><i data-lucide="navigation"></i> Get directions</a>
+            <a href="tel:+639175018816" class="btn btn--outline"><i data-lucide="phone-call"></i> Call now</a>
+          </div>
+        </div>
+
+        <div class="visit__map" data-clip>
+          <iframe title="Map showing Playlist Cafe Antipolo"
+            src="https://maps.google.com/maps?q=Playlist%20Cafe%20Antipolo%4014.5767551,121.1613602&z=16&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <div class="map-card">
+            <span class="brand__logo" aria-hidden="true"></span>
+            <div><strong>Playlist Cafe Antipolo</strong><span>Grand Heights Subd.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__cta">
+        <h2 class="footer__title">See you at <em class="serif">golden hour.</em></h2>
+        <a href="tel:+639175018816" class="btn btn--light btn--lg"><i data-lucide="calendar-heart"></i> Reserve a table</a>
+      </div>
+
+      <div class="footer__grid">
+        <div>
+          <a href="#top" class="brand"><span class="brand__logo" aria-hidden="true"></span><span class="brand__name">Playlist <em>Cafe</em></span></a>
+          <p class="footer__small">Overlooking Glass Cafe · Est. 2018<br>Antipolo, Rizal</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/playlistantipolo/" target="_blank" rel="noopener" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+            <a href="https://www.instagram.com/playlistcafeantipolo/" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="mailto:playlistcafeantipolo@gmail.com" aria-label="Email"><i data-lucide="mail"></i></a>
+            <a href="tel:+639175018816" aria-label="Phone"><i data-lucide="phone"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul><li><a href="#about">About</a></li><li><a href="#menu">Menu</a></li><li><a href="#experience">Experience</a></li><li><a href="#gallery">Gallery</a></li></ul>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Monday – Sunday<br>10:00 AM – 12:00 MN</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul><li><a href="tel:+639175018816">0917 501 8816</a></li><li><a href="mailto:playlistcafeantipolo@gmail.com">playlistcafeantipolo@gmail.com</a></li></ul>
+        </div>
+      </div>
+
+      <p class="footer__word" aria-hidden="true">PLAYLIST</p>
+
+      <div class="footer__bottom">
+        <p>© <span id="year"></span> Playlist Cafe Antipolo. All rights reserved.</p>
+        <a href="#top">Back to top <i data-lucide="arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="to-top" id="toTop" aria-label="Back to top">
+    <svg class="ring-text" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22"/><circle cx="24" cy="24" r="22" id="toTopRing"/></svg>
+    <i data-lucide="arrow-up"></i>
+  </a>
+
+  <!-- ================= FULL MENU DRAWER ================= -->
+  <div class="drawer" id="drawer" hidden>
+    <div class="drawer__backdrop" data-close></div>
+    <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <header class="drawer__head">
+        <div>
+          <p class="kicker"><i data-lucide="book-open"></i> Full menu</p>
+          <h2 id="drawerTitle" class="drawer__title">What are you <em class="serif">craving?</em></h2>
+        </div>
+        <button class="icon-btn" data-close aria-label="Close menu"><i data-lucide="x"></i></button>
+      </header>
+      <div class="drawer__tabs" id="drawerTabs" role="tablist" aria-label="Menu categories"></div>
+      <div class="drawer__body" id="drawerBody" data-lenis-prevent role="tabpanel"></div>
+      <footer class="drawer__foot">Prices in PHP · exclusive of 5% service charge</footer>
+    </aside>
+  </div>
+
+  <!-- ================= LIGHTBOX ================= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <button class="icon-btn lightbox__close" id="lbClose" aria-label="Close"><i data-lucide="x"></i></button>
+    <button class="icon-btn lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous image"><i data-lucide="chevron-left"></i></button>
+    <img id="lbImg" src="" alt="">
+    <button class="icon-btn lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next image"><i data-lucide="chevron-right"></i></button>
+    <p class="lightbox__count" id="lbCount"></p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
