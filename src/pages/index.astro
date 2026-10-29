@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Dock from "../components/Dock.astro";
+import Hero from "../components/Hero.astro";
+import Ribbon from "../components/Ribbon.astro";
+import About from "../components/About.astro";
+import NowPlaying from "../components/NowPlaying.astro";
+import MenuShowcase from "../components/MenuShowcase.astro";
+import Experience from "../components/Experience.astro";
+import Gallery from "../components/Gallery.astro";
+import Visit from "../components/Visit.astro";
+import Footer from "../components/Footer.astro";
+import MenuSheet from "../components/MenuSheet.astro";
+import Lightbox from "../components/Lightbox.astro";
+---
+
+<Layout>
+  <Nav />
+  <main id="main">
+    <Hero />
+    <Ribbon />
+    <About />
+    <NowPlaying />
+    <MenuShowcase />
+    <Experience />
+    <Gallery />
+    <Visit />
+  </main>
+  <Footer />
+  <Dock />
+  <MenuSheet />
+  <Lightbox />
+</Layout>
+
+<script>
+  import "../scripts/main";
+</script>

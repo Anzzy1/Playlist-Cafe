@@ -1,0 +1,159 @@
+@import "@fontsource-variable/bricolage-grotesque/opsz.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource/instrument-serif/400-italic.css";
+@import "tailwindcss";
+
+/* =========================================================
+   Playlist Cafe — design tokens
+   Brand palette: black & white, with coffee-brown accents
+   ========================================================= */
+@theme {
+  --color-ink: #111111;
+  --color-ink-2: #1b1b1b;
+  --color-paper: #f6f3ef;   /* warm off-white, like steamed milk */
+  --color-sand: #ebe5dd;
+  --color-brown: #6f4e37;   /* coffee */
+  --color-espresso: #4b3527;
+  --color-latte: #c8a888;   /* accent on dark backgrounds */
+  --color-muted: #5e5852;
+  --color-muted-2: #8a837c;
+  --color-muted-light: #a9a39d;
+  --color-line: rgb(17 17 17 / .1);
+  --color-line-light: rgb(255 255 255 / .12);
+  --color-open: #3a9d63;
+  --color-closed: #c2453b;
+
+  --font-display: "Bricolage Grotesque Variable", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ease-out-expo: cubic-bezier(.22, 1, .36, 1);
+  --shadow-soft: 0 18px 40px -22px rgb(17 17 17 / .35);
+
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-vinyl: spin 4.5s linear infinite;
+  --animate-marquee: marquee 38s linear infinite;
+
+  @keyframes marquee { to { transform: translateX(-50%); } }
+}
+
+/* live shop status, set on <html data-shop="open|closed"> by scripts/status.ts */
+@custom-variant shop-open (:root[data-shop="open"] &);
+@custom-variant shop-closed (:root[data-shop="closed"] &);
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: var(--nav-h);
+    -webkit-tap-highlight-color: transparent;
+    --nav-h: 60px;
+    --dock-h: 0px;
+  }
+  @media (min-width: 64rem) { html { --nav-h: 72px; } }
+  html:not(.lenis) { scroll-behavior: smooth; }
+  html, body { overflow-x: clip; }
+  body { @apply bg-white text-ink-2 font-sans antialiased leading-relaxed; }
+  html.is-locked, html.is-locked body { overflow: hidden; overscroll-behavior: none; }
+  button { cursor: pointer; }
+  [hidden] { display: none !important; }
+  :focus-visible { outline: 2px solid var(--color-brown); outline-offset: 3px; border-radius: 6px; }
+}
+
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- Reusable pieces ---------- */
+@layer components {
+  .container-x { @apply mx-auto w-[min(1200px,100%-32px)] sm:w-[min(1200px,100%-48px)]; }
+  .section { @apply relative py-16 sm:py-24 lg:py-32; }
+
+  .serif { @apply font-serif italic font-normal tracking-[-.005em]; }
+
+  .h2 { @apply font-display font-semibold tracking-[-.03em] leading-[1.04] text-ink text-[clamp(2rem,7vw,3.5rem)]; }
+  .h2 .serif { @apply text-brown text-[1.06em]; }
+  .h2-light { @apply text-white; }
+  .h2-light .serif { @apply text-latte; }
+
+  .kicker { @apply mb-4 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[.16em] text-muted-2; }
+  .kicker-no { @apply font-display text-[.82rem] tracking-[.04em] text-brown after:ml-2.5 after:inline-block after:h-px after:w-6 after:bg-current after:align-middle after:content-['']; }
+  .kicker-light { @apply text-muted-light; }
+  .kicker-light .kicker-no { @apply text-latte; }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-[1.5px] border-transparent px-5 text-[.94rem] font-semibold whitespace-nowrap no-underline
+      transition-[background-color,color,border-color,transform] duration-300 ease-out-expo active:scale-[.97] hover:-translate-y-0.5;
+  }
+  .btn-lg { @apply min-h-13 px-6.5 text-[.98rem]; }
+  .btn-sm { @apply min-h-10 px-4 text-[.86rem]; }
+  .btn-dark { @apply bg-ink text-white hover:bg-espresso; }
+  .btn-outline { @apply border-ink/20 bg-white text-ink hover:border-ink; }
+  .btn-light { @apply bg-white text-ink hover:bg-latte; }
+  .btn-ghost-light { @apply border-line-light text-white hover:bg-white hover:text-ink; }
+
+  .icon-btn { @apply grid size-11 place-items-center rounded-full bg-ink text-white transition-colors duration-300 hover:bg-brown; }
+
+  /* dot takes the pill's text colour; pulses while open */
+  .live-dot { @apply relative size-2 shrink-0 rounded-full bg-current; }
+  .live-dot::after { @apply absolute inset-0 rounded-full bg-current content-[''] shop-open:animate-ping; }
+
+  /* horizontal swipe rail used on phones; becomes a grid on larger screens */
+  .rail {
+    @apply -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6;
+    scrollbar-width: none;
+    scroll-padding-inline: 16px;
+  }
+  .rail::-webkit-scrollbar { display: none; }
+  .rail > * { @apply shrink-0 snap-start; }
+
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+/* ---------- Music accents ---------- */
+.eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 13px; }
+.eq span { width: 3px; height: 100%; border-radius: 2px; background: var(--color-latte); transform-origin: bottom; animation: eq 1s ease-in-out infinite; }
+.eq span:nth-child(2) { animation-duration: .8s; animation-delay: -.3s; }
+.eq span:nth-child(3) { animation-duration: 1.2s; animation-delay: -.6s; }
+@keyframes eq { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
+
+.vinyl {
+  background: repeating-radial-gradient(circle at center, #0c0c0c 0 2px, #1a1a1a 2px 3px, #0c0c0c 3px 5px);
+  box-shadow: inset 0 0 0 5px #050505, 0 20px 50px -20px rgb(0 0 0 / .8);
+}
+.logo-disc { background: #000 url("/logo.jpg") no-repeat; background-size: 185%; background-position: 48% 52%; }
+
+.statement .word { opacity: .18; }
+
+.footer-word {
+  color: transparent; -webkit-text-stroke: 1px rgb(255 255 255 / .16);
+  background: linear-gradient(#fff, #fff) no-repeat; background-size: 0% 100%;
+  -webkit-background-clip: text; background-clip: text;
+}
+
+/* menu-highlight filter */
+.dish.is-filtered { display: none; }
+
+/* ---------- Full-menu sheet ---------- */
+.sheet-panel { animation: sheet-up .5s var(--ease-out-expo) backwards; }
+.sheet.is-closing .sheet-panel { animation: sheet-down .32s var(--ease-out-expo) both; }
+.sheet-backdrop { animation: fade-in .35s ease both; }
+.sheet.is-closing .sheet-backdrop { animation: fade-out .32s ease both; }
+@media (min-width: 1024px) {
+  .sheet-panel { animation-name: sheet-in; }
+  .sheet.is-closing .sheet-panel { animation-name: sheet-out; }
+}
+.mgroup { animation: rise .45s var(--ease-out-expo) both; }
+
+@keyframes sheet-up { from { transform: translateY(100%); } }
+@keyframes sheet-down { to { transform: translateY(100%); } }
+@keyframes sheet-in { from { transform: translateX(100%); } }
+@keyframes sheet-out { to { transform: translateX(100%); } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes fade-out { to { opacity: 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .statement .word { opacity: 1; }
+}

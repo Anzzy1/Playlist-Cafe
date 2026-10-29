@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import { IMG, SITE } from "../data/site";
+
+const quick = [
+  { icon: "clock", label: "Open daily", value: "10:00 AM – 12 MN", live: true },
+  { icon: "map-pin", label: "Find us", value: "Grand Heights, Antipolo", href: SITE.maps },
+  { icon: "phone", label: "Reservations", value: SITE.phone, href: SITE.tel },
+];
+---
+
+<section id="top" class="pt-[calc(var(--nav-h)+env(safe-area-inset-top)+12px)] pb-10 lg:pt-[calc(var(--nav-h)+56px)] lg:pb-20">
+  <div class="container-x grid grid-cols-1 items-center gap-7 lg:grid-cols-[1.05fr_.95fr] lg:gap-[clamp(36px,5vw,72px)]">
+    <!-- visual: first on phones so the view sells the place before any copy -->
+    <div class="relative lg:order-last lg:pb-10 lg:pl-10" data-intro-visual>
+      <figure class="relative aspect-[4/3.6] overflow-hidden rounded-[28px] bg-sand sm:aspect-[4/3] lg:aspect-[1/1.02] lg:rounded-3xl">
+        <Image src={IMG.terraceSunset} alt="Guests on the Playlist Cafe terrace overlooking the Metro Manila skyline at sunset" widths={[480, 800, 1200]} sizes="(min-width: 1024px) 560px, 100vw" class="size-full object-cover" loading="eager" fetchpriority="high" />
+      </figure>
+      <figure class="absolute bottom-0 left-0 hidden aspect-[3/4] w-[34%] overflow-hidden rounded-[22px] border-6 border-white bg-sand shadow-soft lg:block" data-intro-small>
+        <Image src={IMG.hotCoffee} alt="Playlist Cafe hot coffee cups" widths={[240, 400]} sizes="200px" class="size-full object-cover" />
+      </figure>
+      <div class="absolute -top-2.5 right-2.5 grid size-[76px] place-items-center rounded-full bg-ink text-white sm:size-24 lg:-top-4.5 lg:-right-4.5 lg:size-[104px]" aria-hidden="true" data-intro-badge>
+        <svg class="absolute inset-1 animate-spin-slow" viewBox="0 0 120 120"><defs><path id="estCircle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs><text class="fill-white font-sans text-[10.5px] font-semibold tracking-[2px]"><textPath href="#estCircle" textLength="272">EST. 2018 ✦ ANTIPOLO ✦ </textPath></text></svg>
+        <Icon name="coffee" size={24} class="text-latte" />
+      </div>
+    </div>
+
+    <div>
+      <p class="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-3.5 py-1.5 text-[.8rem] font-medium text-muted" data-intro>
+        <Icon name="map-pin" size={15} class="text-brown" /> Antipolo, Rizal · Overlooking Glass Cafe
+      </p>
+      <h1 class="mt-4 mb-4 max-w-[620px] font-display text-[clamp(2.25rem,9.5vw,3.9rem)] leading-[1.02] font-bold tracking-[-.035em] text-ink lg:mt-5 lg:text-[clamp(2.3rem,4.6vw,3.9rem)]" data-intro>
+        Good coffee, good music &amp; <em class="serif text-[1.06em] text-brown">the best view</em> in Antipolo.
+      </h1>
+      <p class="mb-6 max-w-[500px] text-[1.02rem] text-muted lg:mb-7.5 lg:text-[1.1rem]" data-intro>
+        Specialty coffee, all-day comfort food and live acoustic nights, with the Metro Manila skyline right outside the glass.
+      </p>
+
+      <div class="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3" data-intro>
+        <a href="#menu" class="btn btn-dark btn-lg px-4">View menu <Icon name="arrow-right" size={18} /></a>
+        <a href={SITE.maps} class="btn btn-outline btn-lg px-4" target="_blank" rel="noopener"><Icon name="navigation" size={18} /> Directions</a>
+      </div>
+
+      <ul class="mt-7 divide-y divide-line overflow-hidden rounded-2xl bg-paper lg:mt-10 lg:grid lg:grid-cols-3 lg:gap-4 lg:divide-y-0 lg:overflow-visible lg:rounded-none lg:border-t lg:border-line lg:bg-transparent lg:pt-6.5" data-intro>
+        {quick.map((q) => {
+          const Tag = q.href ? "a" : "div";
+          return (
+            <li class="min-w-0">
+              <Tag href={q.href} target={q.href?.startsWith("http") ? "_blank" : undefined} rel={q.href?.startsWith("http") ? "noopener" : undefined} class="flex items-center gap-3 px-3.5 py-3 no-underline active:bg-sand lg:p-0 lg:active:bg-transparent">
+                <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-white text-brown lg:bg-paper"><Icon name={q.icon} /></span>
+                <span class="min-w-0 flex-1">
+                  {q.live ? (
+                    <small class="flex items-center gap-1.5 text-[.7rem] font-semibold tracking-[.08em] text-muted-2 uppercase shop-closed:text-closed shop-open:text-open"><span class="live-dot size-1.5"></span><span data-status-short>{q.label}</span></small>
+                  ) : (
+                    <small class="block text-[.7rem] font-semibold tracking-[.08em] text-muted-2 uppercase">{q.label}</small>
+                  )}
+                  <strong class="block truncate text-[.9rem] leading-snug font-semibold text-ink">{q.value}</strong>
+                </span>
+                {q.href && <Icon name="chevron-right" size={18} class="text-muted-2 lg:hidden" />}
+              </Tag>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
+</section>

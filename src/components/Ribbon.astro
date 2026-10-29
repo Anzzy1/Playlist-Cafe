@@ -1,0 +1,26 @@
+---
+import Icon from "./Icon.astro";
+
+const items = [
+  ["coffee", "Specialty Coffee"],
+  ["sunset", "Skyline Views"],
+  ["audio-lines", "Live Acoustic Nights"],
+  ["egg", "All-Day Breakfast"],
+  ["drumstick", "Wings & Pasta"],
+  ["moon", "Open Till Midnight"],
+];
+---
+
+<div class="overflow-hidden bg-ink text-white" aria-hidden="true">
+  <div class="flex w-max animate-marquee">
+    {[0, 1].map(() => (
+      <div class="flex">
+        {items.map(([icon, label]) => (
+          <span class="inline-flex items-center gap-2.5 px-5 py-3.5 font-display text-[.95rem] font-medium tracking-[-.01em] whitespace-nowrap lg:px-6.5 lg:py-4 lg:text-[1.05rem]">
+            <Icon name={icon} size={17} class="text-latte" />{label}
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,19 @@
+---
+/* Phone-only action bar: the three things guests come to do, within thumb reach. */
+import Icon from "./Icon.astro";
+import { SITE } from "../data/site";
+---
+
+<div id="dock" class="pointer-events-none fixed inset-x-0 bottom-0 z-90 px-3 pb-[calc(10px+env(safe-area-inset-bottom))] opacity-0 translate-y-6 transition-[opacity,translate] duration-400 ease-out-expo [&.is-visible]:pointer-events-auto [&.is-visible]:translate-y-0 [&.is-visible]:opacity-100 lg:hidden">
+  <nav class="mx-auto flex max-w-md items-center gap-1.5 rounded-full bg-ink/95 p-1.5 text-white shadow-[0_20px_40px_-12px_rgb(0_0_0/.55)] backdrop-blur-lg" aria-label="Quick actions">
+    <button data-open="coffee" class="flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full text-[.88rem] font-semibold active:bg-white/10">
+      <Icon name="book-open" size={18} class="text-latte" />Menu
+    </button>
+    <a href={SITE.maps} target="_blank" rel="noopener" class="flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full text-[.88rem] font-semibold no-underline active:bg-white/10">
+      <Icon name="navigation" size={18} class="text-latte" />Directions
+    </a>
+    <a href={SITE.tel} class="flex min-h-12 flex-[1.15] items-center justify-center gap-2 rounded-full bg-white text-[.88rem] font-bold text-ink no-underline active:scale-[.97]">
+      <Icon name="phone" size={17} />Reserve
+    </a>
+  </nav>
+</div>

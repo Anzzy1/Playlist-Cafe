@@ -1,0 +1,58 @@
+---
+import Icon from "./Icon.astro";
+import StatusPill from "./StatusPill.astro";
+import { SITE } from "../data/site";
+
+const contact = [
+  { icon: "map-pin", label: "Address", value: SITE.address, href: SITE.maps },
+  { icon: "phone", label: "Call or text", value: SITE.phone, href: SITE.tel },
+  { icon: "mail", label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
+  { icon: "facebook", label: "Message us on Facebook", value: "facebook.com/playlistantipolo", href: SITE.facebook },
+];
+---
+
+<section id="visit" class="section">
+  <div class="container-x grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-[clamp(40px,6vw,80px)]">
+    <div>
+      <p class="kicker" data-reveal><span class="kicker-no">05</span> Visit us</p>
+      <h2 class="h2 mb-6 lg:mb-8" data-reveal>Your table with a view <em class="serif">is waiting.</em></h2>
+
+      <div class="mb-2 flex min-h-16 items-center gap-3.5 rounded-2xl bg-paper px-4 py-3" data-reveal>
+        <span class="grid size-10.5 shrink-0 place-items-center rounded-xl border border-line bg-white text-brown"><Icon name="clock" /></span>
+        <span class="min-w-0 flex-1">
+          <small class="block text-[.68rem] font-semibold tracking-[.1em] text-muted-2 uppercase">Store hours</small>
+          <span class="block text-[.94rem] leading-snug font-medium">Daily · 10 AM – 12 MN</span>
+        </span>
+        <StatusPill />
+      </div>
+
+      <ul class="grid gap-2">
+        {contact.map((c) => (
+          <li data-reveal>
+            <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel={c.href.startsWith("http") ? "noopener" : undefined} class="group flex min-h-16 items-center gap-3.5 rounded-2xl bg-paper px-4 py-3 no-underline transition-colors active:bg-sand">
+              <span class="grid size-10.5 shrink-0 place-items-center rounded-xl border border-line bg-white text-brown"><Icon name={c.icon} /></span>
+              <span class="min-w-0 flex-1">
+                <small class="block text-[.68rem] font-semibold tracking-[.1em] text-muted-2 uppercase">{c.label}</small>
+                <span class="block text-[.94rem] leading-snug font-medium [overflow-wrap:anywhere] group-hover:text-brown">{c.value}</span>
+              </span>
+              <Icon name="chevron-right" size={18} class="text-muted-2 lg:hidden" />
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-5 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap" data-reveal>
+        <a href={SITE.maps} class="btn btn-dark" target="_blank" rel="noopener"><Icon name="navigation" /> Directions</a>
+        <a href={SITE.tel} class="btn btn-outline"><Icon name="phone-call" /> Call now</a>
+      </div>
+    </div>
+
+    <div class="relative h-72 overflow-hidden rounded-[22px] border border-line bg-sand sm:h-96 lg:h-auto lg:min-h-[500px] lg:rounded-3xl" data-clip>
+      <iframe title="Map showing Playlist Cafe Antipolo" src={SITE.mapEmbed} loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen class="absolute inset-0 size-full border-0 grayscale contrast-105"></iframe>
+      <div class="pointer-events-none absolute bottom-3 left-3 flex items-center gap-3 rounded-[14px] bg-white py-2.5 pr-4 pl-2.5 shadow-soft lg:bottom-4 lg:left-4">
+        <span class="logo-disc size-9 rounded-full" aria-hidden="true"></span>
+        <div class="leading-tight"><strong class="block text-[.9rem]">Playlist Cafe Antipolo</strong><span class="text-[.76rem] text-muted-2">Grand Heights Subd.</span></div>
+      </div>
+    </div>
+  </div>
+</section>

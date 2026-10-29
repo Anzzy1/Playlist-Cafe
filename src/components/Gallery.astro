@@ -1,0 +1,48 @@
+---
+import { Image, getImage } from "astro:assets";
+import Icon from "./Icon.astro";
+import { GALLERY, SITE } from "../data/site";
+
+// full-size versions the lightbox loads on demand
+const all = [...GALLERY.a, ...GALLERY.b];
+const full = await Promise.all(all.map((p) => getImage({ src: p.img, width: 1400, format: "webp", quality: 78 })));
+const slides = all.map((p, i) => ({ src: full[i].src, alt: p.alt }));
+
+const reels = [
+  { items: GALLERY.a, offset: 0, cls: "[animation-duration:60s]" },
+  { items: GALLERY.b, offset: GALLERY.a.length, cls: "[animation-duration:70s] [animation-direction:reverse]" },
+];
+---
+
+<section id="gallery" class="section overflow-hidden bg-ink text-white">
+  <div class="container-x mb-8 flex flex-wrap items-end justify-between gap-5 lg:mb-11">
+    <div>
+      <p class="kicker kicker-light" data-reveal><span class="kicker-no">04</span> Gallery</p>
+      <h2 class="h2 h2-light" data-reveal>Moments on <em class="serif">repeat.</em></h2>
+    </div>
+    <div class="flex w-full flex-wrap gap-2.5 sm:w-auto" data-reveal>
+      <a class="btn btn-ghost-light btn-sm flex-1 sm:flex-none" href={SITE.instagram} target="_blank" rel="noopener"><Icon name="instagram" size={16} /> Instagram</a>
+      <a class="btn btn-ghost-light btn-sm flex-1 sm:flex-none" href={SITE.facebook} target="_blank" rel="noopener"><Icon name="facebook" size={16} /> Facebook</a>
+    </div>
+  </div>
+
+  <div id="reels" data-slides={JSON.stringify(slides)}>
+    {reels.map((r) => (
+      <div class:list={["mb-2.5 flex w-max animate-marquee hover:[animation-play-state:paused] lg:mb-3.5", r.cls]}>
+        {[false, true].map((copy) => r.items.map((p, i) => (
+          <button
+            class="group relative mr-2.5 h-[clamp(150px,42vw,300px)] shrink-0 overflow-hidden rounded-2xl lg:mr-3.5 lg:h-[clamp(200px,25vw,300px)]"
+            style={`aspect-ratio:${p.ar}`}
+            data-i={r.offset + i}
+            aria-hidden={copy ? "true" : undefined}
+            tabindex={copy ? -1 : undefined}
+            aria-label={copy ? undefined : `View photo: ${p.alt}`}
+          >
+            <Image src={p.img} alt="" widths={[300, 500]} sizes="300px" class="size-full object-cover transition-transform duration-800 ease-out-expo group-hover:scale-105" />
+          </button>
+        )))}
+      </div>
+    ))}
+  </div>
+  <p class="container-x mt-4 flex items-center gap-1.5 text-[.8rem] text-muted-light lg:hidden"><Icon name="pointer" size={14} /> Tap any photo to view it full screen</p>
+</section>

@@ -1,0 +1,50 @@
+---
+import Icon from "./Icon.astro";
+import { NAV, SITE } from "../data/site";
+---
+
+<header id="nav" class="fixed inset-x-0 top-0 z-100 flex h-[calc(var(--nav-h)+env(safe-area-inset-top))] items-center border-b border-transparent bg-white/90 pt-[env(safe-area-inset-top)] backdrop-blur-xl transition-[border-color,transform] duration-500 ease-out-expo [&.is-hidden]:-translate-y-full [&.is-scrolled]:border-line">
+  <div class="container-x flex items-center justify-between gap-5">
+    <a href="#top" class="inline-flex items-center gap-2.5 no-underline" aria-label="Playlist Cafe, back to top">
+      <span class="logo-disc size-9 rounded-full lg:size-[38px]" aria-hidden="true"></span>
+      <span class="font-display text-[1.08rem] font-bold tracking-[-.02em] lg:text-[1.15rem]">Playlist <em class="font-serif text-[1.12em] font-normal text-brown">Cafe</em></span>
+    </a>
+
+    <nav id="navLinks" class="hidden gap-0.5 lg:flex" aria-label="Primary">
+      {NAV.map((l) => (
+        <a href={l.href} class="rounded-full px-3.5 py-2 text-[.92rem] font-medium text-muted no-underline transition-colors hover:bg-paper hover:text-ink [&.is-active]:bg-paper [&.is-active]:text-ink">{l.label}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2.5 lg:gap-3.5">
+      <span class="inline-flex items-center gap-2 rounded-full bg-paper px-3 py-1.5 text-[.78rem] font-semibold text-muted ring-1 ring-line ring-inset transition-colors shop-open:bg-open/10 shop-open:text-[#1f7a46] shop-open:ring-open/25 shop-closed:bg-closed/8 shop-closed:text-[#b3362c] shop-closed:ring-closed/20">
+        <span class="live-dot"></span><span data-status-short>Open daily</span><span class="hidden font-medium opacity-75 lg:inline" data-status-until></span>
+      </span>
+      <a href={SITE.tel} class="btn btn-dark btn-sm hidden lg:inline-flex"><Icon name="phone" size={16} /><span>Reserve</span></a>
+      <button id="navToggle" class="flex size-11 flex-col items-center justify-center gap-[5px] rounded-full bg-ink lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="h-0.5 w-[17px] rounded bg-white transition-transform duration-300 ease-out-expo [[aria-expanded=true]>&]:translate-y-[3.5px] [[aria-expanded=true]>&]:rotate-45"></span>
+        <span class="h-0.5 w-[17px] rounded bg-white transition-transform duration-300 ease-out-expo [[aria-expanded=true]>&]:-translate-y-[3.5px] [[aria-expanded=true]>&]:-rotate-45"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div id="mobileMenu" class="fixed inset-x-0 top-[calc(var(--nav-h)+env(safe-area-inset-top))] bottom-0 z-95 flex flex-col justify-between overflow-y-auto bg-ink px-5 pt-4 pb-[calc(28px+env(safe-area-inset-bottom))] text-white lg:hidden" hidden>
+  <nav class="grid" aria-label="Mobile">
+    {NAV.map((l, i) => (
+      <a href={l.href} class="flex items-center gap-3.5 border-b border-line-light py-4 font-display text-[clamp(1.8rem,8vw,2.4rem)] font-semibold tracking-[-.03em] no-underline">
+        <span class="font-sans text-[.78rem] font-semibold tracking-normal text-latte">0{i + 1}</span>{l.label}
+        <Icon name="arrow-up-right" class="ml-auto text-muted-light" size={22} />
+      </a>
+    ))}
+  </nav>
+  <div class="mt-8 grid gap-3">
+    <a href={SITE.tel} class="btn btn-light btn-lg"><Icon name="phone" />Call {SITE.phone}</a>
+    <div class="grid grid-cols-2 gap-2.5">
+      <a href={SITE.facebook} target="_blank" rel="noopener" class="btn btn-ghost-light"><Icon name="facebook" /> Facebook</a>
+      <a href={SITE.instagram} target="_blank" rel="noopener" class="btn btn-ghost-light"><Icon name="instagram" /> Instagram</a>
+    </div>
+    <p class="flex items-center justify-center gap-2 text-[.9rem] text-muted-light"><Icon name="clock" size={16} /> Open daily · 10am – 12mn</p>
+  </div>
+</div>

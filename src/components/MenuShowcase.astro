@@ -1,0 +1,89 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import { DISHES } from "../data/site";
+
+const filters = [
+  { id: "all", label: "All" },
+  { id: "coffee", label: "Coffee", icon: "coffee" },
+  { id: "drinks", label: "Shakes", icon: "cup-soda" },
+  { id: "food", label: "Food", icon: "utensils" },
+];
+
+const span = {
+  xl: "md:col-span-2 md:row-span-2",
+  tall: "md:row-span-2",
+  wide: "md:col-span-2",
+};
+---
+
+<section id="menu" class="section">
+  <div class="container-x">
+    <div class="mb-6 flex flex-wrap items-end justify-between gap-5 lg:mb-10">
+      <div>
+        <p class="kicker" data-reveal><span class="kicker-no">02</span> The menu</p>
+        <h2 class="h2" data-reveal>Guest <em class="serif">favorites.</em></h2>
+      </div>
+      <div class="no-scrollbar -mx-4 w-[calc(100%+32px)] overflow-x-auto px-4 sm:mx-0 sm:w-auto sm:px-0" data-reveal>
+        <div class="inline-flex gap-1 rounded-full border border-line bg-paper p-1.25" role="group" aria-label="Filter menu highlights">
+          {filters.map((f, i) => (
+            <button class="filter inline-flex min-h-10 shrink-0 items-center gap-1.75 rounded-full px-4 text-[.88rem] font-semibold text-muted transition-colors duration-300 hover:text-ink aria-pressed:bg-ink aria-pressed:text-white" data-filter={f.id} aria-pressed={i === 0 ? "true" : "false"}>
+              {f.icon && <Icon name={f.icon} size={15} />}{f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div id="bento" class="rail md:mx-0 md:grid md:snap-none md:grid-flow-dense md:auto-rows-[230px] md:grid-cols-2 md:gap-3.5 md:overflow-visible md:px-0 md:pb-0 lg:auto-rows-[250px] lg:grid-cols-4">
+      {DISHES.map((d, i) => (
+        <button
+          class:list={["dish group relative isolate block aspect-[4/5] w-[78%] overflow-hidden rounded-[22px] bg-ink-2 text-left text-white sm:w-[44%] md:aspect-auto md:size-full md:rounded-2xl", d.size && span[d.size]]}
+          data-cat={d.cat}
+          data-open={d.open}
+          aria-label={`${d.name}, ${d.price}. Open the ${d.tag} menu`}
+        >
+          <Image
+            src={d.img}
+            alt=""
+            widths={[400, 640, 960]}
+            sizes={d.size === "xl" ? "(min-width: 768px) 50vw, 78vw" : "(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 78vw"}
+            loading={i < 2 ? "eager" : "lazy"}
+            class:list={["absolute inset-0 -z-2 size-full object-cover transition-transform duration-900 ease-out-expo group-hover:scale-[1.06]", d.crop && "object-[center_85%]"]}
+          />
+          <span class="absolute inset-0 -z-1 bg-linear-to-b from-transparent from-30% to-black/80"></span>
+          <span class="absolute inset-x-0 bottom-0 grid gap-0.75 p-4.5 lg:p-5">
+            <span class="mb-2 inline-flex items-center gap-1.5 justify-self-start rounded-full border border-white/20 bg-black/50 px-2.5 py-1 text-[.7rem] font-semibold tracking-[.03em] backdrop-blur-sm">
+              <Icon name={d.icon} size={13} class="text-latte" />{d.tag}
+            </span>
+            <span class:list={["font-display text-[1.25rem] leading-[1.12] font-semibold tracking-[-.02em]", d.size === "xl" && "md:text-[clamp(1.6rem,2.6vw,2.2rem)]"]}>{d.name}</span>
+            <span class="max-w-[360px] text-[.84rem] leading-snug text-white/80">{d.desc}</span>
+            <span class="mt-2.5 justify-self-start rounded-full bg-white px-3 py-1.25 text-[.84rem] font-bold text-ink">{d.price}</span>
+          </span>
+          <span class="absolute top-3.5 right-3.5 grid size-10 place-items-center rounded-full bg-white text-ink transition-[opacity,scale] duration-300 ease-out-expo lg:scale-70 lg:opacity-0 lg:group-hover:scale-100 lg:group-hover:opacity-100 lg:group-focus-visible:scale-100 lg:group-focus-visible:opacity-100">
+            <Icon name="arrow-up-right" size={18} />
+          </span>
+        </button>
+      ))}
+    </div>
+
+    <div class="mt-3 flex items-center justify-between text-[.8rem] font-medium text-muted-2 md:hidden" aria-hidden="true">
+      <span class="inline-flex items-center gap-1.5"><Icon name="hand" size={15} /> Swipe for more</span>
+      <span class="h-1 w-24 overflow-hidden rounded-full bg-line"><span id="bentoBar" class="block h-full w-1/4 origin-left rounded-full bg-ink transition-[translate] duration-150"></span></span>
+    </div>
+
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-5 rounded-[22px] border border-line bg-paper p-5 lg:px-6 lg:py-5.5" data-reveal>
+      <div class="flex items-center gap-4">
+        <span class="grid size-12 shrink-0 place-items-center rounded-[14px] bg-ink text-white lg:size-[52px]"><Icon name="book-open" size={22} /></span>
+        <div>
+          <h3 class="font-display text-[1.15rem] font-semibold tracking-[-.02em] lg:text-[1.2rem]">See the full menu</h3>
+          <p class="text-[.88rem] leading-snug text-muted">All 60+ items with prices, from all-day breakfast to sharing plates for the barkada.</p>
+        </div>
+      </div>
+      <div class="grid w-full grid-cols-2 gap-2.5 sm:flex sm:w-auto">
+        <button class="btn btn-dark" data-open="coffee">Full menu <Icon name="arrow-right" /></button>
+        <button class="btn btn-outline" id="viewBoards"><Icon name="images" /> Boards</button>
+      </div>
+    </div>
+  </div>
+</section>

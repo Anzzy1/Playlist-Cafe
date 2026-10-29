@@ -1,0 +1,63 @@
+---
+import Icon from "./Icon.astro";
+import { NAV, SITE } from "../data/site";
+---
+
+<footer class="overflow-hidden bg-ink pt-16 pb-[calc(96px+env(safe-area-inset-bottom))] text-white lg:pt-[clamp(80px,9vw,110px)] lg:pb-7">
+  <div class="container-x">
+    <div class="flex flex-wrap items-end justify-between gap-7 border-b border-line-light pb-12 lg:pb-15">
+      <h2 class="footer-title max-w-[760px] font-display text-[clamp(2.3rem,10vw,4.6rem)] leading-none font-bold tracking-[-.04em] lg:text-[clamp(2.3rem,5.6vw,4.6rem)]">See you at <em class="serif text-[1.06em] text-latte">golden hour.</em></h2>
+      <a href={SITE.tel} class="btn btn-light btn-lg w-full sm:w-auto"><Icon name="calendar-heart" /> Reserve a table</a>
+    </div>
+
+    <div class="grid grid-cols-2 gap-x-6 gap-y-8 py-12 lg:grid-cols-[1.6fr_1fr_1fr_1.4fr] lg:gap-10 lg:py-14">
+      <div class="col-span-2 lg:col-span-1">
+        <a href="#top" class="inline-flex items-center gap-2.5 no-underline">
+          <span class="logo-disc size-[38px] rounded-full" aria-hidden="true"></span>
+          <span class="font-display text-[1.15rem] font-bold tracking-[-.02em]">Playlist <em class="font-serif text-[1.12em] font-normal text-latte">Cafe</em></span>
+        </a>
+        <p class="mt-3.5 mb-4.5 text-[.9rem] text-muted-light">Overlooking Glass Cafe · Est. 2018<br />Antipolo, Rizal</p>
+        <div class="flex gap-2.5">
+          {[
+            { href: SITE.facebook, icon: "facebook", label: "Facebook" },
+            { href: SITE.instagram, icon: "instagram", label: "Instagram" },
+            { href: `mailto:${SITE.email}`, icon: "mail", label: "Email" },
+            { href: SITE.tel, icon: "phone", label: "Phone" },
+          ].map((s) => (
+            <a href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noopener" : undefined} aria-label={s.label} class="grid size-11 place-items-center rounded-full border border-line-light transition-colors hover:bg-white hover:text-ink"><Icon name={s.icon} /></a>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h4 class="mb-3.5 text-[.72rem] font-semibold tracking-[.16em] text-muted-2 uppercase">Explore</h4>
+        <ul class="grid gap-2.5">{NAV.map((l) => <li><a href={l.href} class="text-muted-light no-underline transition-colors hover:text-white">{l.label}</a></li>)}</ul>
+      </div>
+      <div>
+        <h4 class="mb-3.5 text-[.72rem] font-semibold tracking-[.16em] text-muted-2 uppercase">Hours</h4>
+        <p class="text-muted-light">Monday – Sunday<br />10:00 AM – 12:00 MN</p>
+      </div>
+      <div class="col-span-2 lg:col-span-1">
+        <h4 class="mb-3.5 text-[.72rem] font-semibold tracking-[.16em] text-muted-2 uppercase">Contact</h4>
+        <ul class="grid gap-2.5">
+          <li><a href={SITE.tel} class="text-muted-light no-underline hover:text-white">{SITE.phone}</a></li>
+          <li><a href={`mailto:${SITE.email}`} class="text-muted-light no-underline [overflow-wrap:anywhere] hover:text-white">{SITE.email}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer-word mt-1.5 mb-6.5 text-center font-display text-[clamp(4.5rem,21vw,20rem)] leading-[.8] font-extrabold tracking-[-.06em] select-none" aria-hidden="true">PLAYLIST</p>
+
+    <div class="flex flex-wrap justify-between gap-3 text-[.84rem] text-muted-light">
+      <p>© <span id="year">2026</span> Playlist Cafe Antipolo. All rights reserved.</p>
+      <a href="#top" class="inline-flex items-center gap-1.5 no-underline hover:text-white">Back to top <Icon name="arrow-up" size={15} /></a>
+    </div>
+  </div>
+</footer>
+
+<a href="#top" id="toTop" class="pointer-events-none fixed right-5 bottom-5 z-80 hidden size-12 translate-y-4 place-items-center rounded-full bg-ink text-white opacity-0 transition-[opacity,translate] duration-300 ease-out-expo lg:grid [&.is-visible]:pointer-events-auto [&.is-visible]:translate-y-0 [&.is-visible]:opacity-100" aria-label="Back to top">
+  <svg class="absolute inset-0 -rotate-90" viewBox="0 0 48 48" aria-hidden="true">
+    <circle cx="24" cy="24" r="22" fill="none" stroke-width="2" stroke="rgb(255 255 255 / .15)" />
+    <circle id="toTopRing" cx="24" cy="24" r="22" fill="none" stroke-width="2" class="stroke-latte" stroke-dasharray="138.2" stroke-dashoffset="138.2" stroke-linecap="round" />
+  </svg>
+  <Icon name="arrow-up" />
+</a>

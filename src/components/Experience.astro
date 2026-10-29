@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import { MOMENTS } from "../data/site";
+---
+
+<section id="experience" class="section bg-paper">
+  <div class="container-x">
+    <div class="mb-8 flex flex-wrap items-end justify-between gap-4 lg:mb-12 lg:gap-7.5">
+      <div>
+        <p class="kicker" data-reveal><span class="kicker-no">03</span> The experience</p>
+        <h2 class="h2" data-reveal>More than a <em class="serif">coffee run.</em></h2>
+      </div>
+      <p class="max-w-[420px] text-[1.02rem] text-muted" data-reveal>Quiet dates, big celebrations, or a sunset you don't want to miss. Here's how guests spend their time with us.</p>
+    </div>
+
+    <div class="rail md:mx-0 md:grid md:grid-cols-2 md:gap-x-5 md:gap-y-7 md:overflow-visible md:px-0 lg:grid-cols-4">
+      {MOMENTS.map((m) => (
+        <article class="group w-[74%] sm:w-[46%] md:w-auto" data-reveal>
+          <figure class="aspect-[4/5] overflow-hidden rounded-[22px] bg-sand md:rounded-2xl">
+            <Image src={m.img} alt={m.alt} widths={[360, 560, 800]} sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 74vw" class="size-full object-cover transition-transform duration-900 ease-out-expo group-hover:scale-105" />
+          </figure>
+          <span class="relative -mt-5.75 mb-3 ml-4.5 grid size-11.5 place-items-center rounded-full border border-line bg-white text-brown"><Icon name={m.icon} /></span>
+          <h3 class="mb-1.5 font-display text-[1.15rem] font-semibold tracking-[-.02em] lg:text-[1.2rem]">{m.title}</h3>
+          <p class="text-[.9rem] text-muted">{m.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

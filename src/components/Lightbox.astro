@@ -1,0 +1,18 @@
+---
+import { getImage } from "astro:assets";
+import Icon from "./Icon.astro";
+import { MENU_BOARDS } from "../data/site";
+
+const boards = await Promise.all(MENU_BOARDS.map((b) => getImage({ src: b, width: 1400, format: "webp", quality: 78 })));
+const boardSlides = boards.map((b, i) => ({ src: b.src, alt: `Playlist Cafe menu board ${i + 1}` }));
+---
+
+<div id="lightbox" class="fixed inset-0 z-300 grid touch-none place-items-center bg-black/95 px-3 pt-16 pb-24 [animation:fade-in_.3s_ease_both] lg:px-20 lg:py-17.5" role="dialog" aria-modal="true" aria-label="Image viewer" data-boards={JSON.stringify(boardSlides)} hidden>
+  <button id="lbClose" class="icon-btn absolute top-[calc(14px+env(safe-area-inset-top))] right-3.5 bg-white/12 hover:bg-white hover:text-ink lg:top-4.5 lg:right-4.5" aria-label="Close"><Icon name="x" /></button>
+  <img id="lbImg" src="data:," alt="" class="max-h-[calc(100dvh-170px)] max-w-full rounded-[10px] object-contain transition-[translate,opacity] duration-200 lg:max-h-[calc(100dvh-140px)]" />
+  <div class="absolute inset-x-0 bottom-[calc(16px+env(safe-area-inset-bottom))] flex items-center justify-center gap-4 lg:static lg:contents">
+    <button id="lbPrev" class="icon-btn bg-white/12 hover:bg-white hover:text-ink lg:absolute lg:top-1/2 lg:left-4.5 lg:-translate-y-1/2" aria-label="Previous image"><Icon name="chevron-left" /></button>
+    <p id="lbCount" class="min-w-14 text-center text-[.84rem] text-muted-light lg:absolute lg:inset-x-0 lg:bottom-5.5"></p>
+    <button id="lbNext" class="icon-btn bg-white/12 hover:bg-white hover:text-ink lg:absolute lg:top-1/2 lg:right-4.5 lg:-translate-y-1/2" aria-label="Next image"><Icon name="chevron-right" /></button>
+  </div>
+</div>

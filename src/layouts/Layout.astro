@@ -1,0 +1,28 @@
+---
+import "../styles/global.css";
+import { getImage } from "astro:assets";
+import { IMG } from "../data/site";
+
+const og = await getImage({ src: IMG.terraceSunset, width: 1200, format: "jpg" });
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Playlist Cafe Antipolo | Coffee, Music &amp; City Views</title>
+    <meta name="description" content="Playlist Cafe Antipolo: an overlooking glass cafe with specialty coffee, all-day comfort food, live acoustic nights and views of the Metro Manila skyline. Open daily 10am to 12mn." />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Playlist Cafe Antipolo" />
+    <meta property="og:description" content="Good coffee, good music and the best view in Antipolo. Open daily 10am – 12mn." />
+    <meta property="og:image" content={og.src} />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" href="/logo.jpg" />
+    <link rel="apple-touch-icon" href="/logo.jpg" />
+  </head>
+  <body>
+    <a href="#main" class="fixed -top-20 left-4 z-[1000] rounded-lg bg-ink px-4 py-2.5 font-semibold text-white focus:top-4">Skip to content</a>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import { IMG } from "../data/site";
+
+const perks = [
+  { icon: "coffee", title: "Coffee & signatures", text: "Hot and iced classics plus our Ube Series." },
+  { icon: "mountain", title: "Skyline views", text: "Glass walls and an open-air terrace." },
+  { icon: "mic", title: "Live music", text: "Acoustic sets from local artists." },
+  { icon: "utensils", title: "Food all day", text: "Breakfast, steaks, wings and pasta." },
+];
+
+const stats = [
+  { n: 2018, label: "Serving since" },
+  { n: 14, unit: "hrs", label: "Open every day" },
+  { n: 7, unit: "days", label: "A week, no day off" },
+  { n: 60, unit: "+", label: "Items on the menu" },
+];
+---
+
+<section id="about" class="section bg-paper">
+  <div class="container-x">
+    <p class="kicker" data-reveal><span class="kicker-no">01</span> Our story</p>
+    <p id="statement" class="statement mb-12 max-w-[1000px] font-display text-[clamp(1.45rem,5.6vw,2.8rem)] leading-[1.2] font-medium tracking-[-.025em] text-ink lg:mb-24">
+      Perched on the hills of Antipolo, Playlist Cafe turns the whole Metro Manila skyline into your backdrop. Great coffee by day, golden sunsets by evening, and city lights until midnight.
+    </p>
+
+    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-[clamp(40px,6vw,96px)]">
+      <div class="relative mx-auto w-full max-w-[540px] pr-10 pb-12 sm:pr-0 sm:pb-[70px] sm:pl-[60px]">
+        <figure class="aspect-[4/4.2] overflow-hidden rounded-3xl bg-sand sm:aspect-[4/4.6]" data-clip>
+          <Image src={IMG.icedCoffee} alt="Two iced coffees raised in front of the Playlist Cafe building" widths={[400, 700, 1000]} sizes="(min-width: 1024px) 480px, 90vw" class="size-full scale-[1.12] object-cover" data-speed="-6" />
+        </figure>
+        <figure class="absolute right-0 bottom-0 aspect-[4/3] w-[52%] overflow-hidden rounded-[22px] border-6 border-paper sm:right-auto sm:left-0 sm:w-[48%]" data-clip>
+          <Image src={IMG.acoustic} alt="Live acoustic duo performing at the cafe" widths={[300, 500]} sizes="260px" class="size-full object-cover" />
+        </figure>
+      </div>
+
+      <div>
+        <h2 class="h2 mb-4 lg:mb-5" data-reveal>Your favorite spot <em class="serif">above the city.</em></h2>
+        <p class="text-[1.02rem] text-muted" data-reveal>We're the overlooking glass cafe on Sierra Madre St., Grand Heights. Bright and breezy at noon, glowing at golden hour, and cozy after dark. We pour espresso classics and house signatures, and cook hearty Filipino and comfort favorites, all set to a good playlist.</p>
+
+        <ul class="mt-7 grid grid-cols-2 gap-2.5 lg:mt-8 lg:gap-3">
+          {perks.map((p) => (
+            <li class="flex flex-col gap-3 rounded-2xl border border-line bg-white p-4 transition-[border-color,translate] duration-300 hover:-translate-y-0.75 hover:border-brown sm:flex-row sm:gap-3.5" data-reveal>
+              <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-ink text-white sm:size-[42px]"><Icon name={p.icon} /></span>
+              <div>
+                <h3 class="font-display text-[.98rem] leading-tight font-semibold tracking-[-.01em]">{p.title}</h3>
+                <p class="mt-1 text-[.82rem] leading-snug text-muted sm:text-[.86rem]">{p.text}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-2.5 sm:gap-0 lg:mt-24 lg:grid-cols-4 lg:border-t lg:border-line">
+      {stats.map((s, i) => (
+        <div class:list={["rounded-2xl bg-white p-4 sm:rounded-none sm:bg-transparent sm:px-5.5 sm:pt-6.5 sm:pb-6 lg:pb-0", i % 2 && "sm:border-l sm:border-line", i === 0 && "lg:pl-0", i === 2 && "lg:border-l lg:border-line"]} data-reveal>
+          <strong class="flex items-baseline gap-1 font-display text-[clamp(2rem,9vw,3.4rem)] leading-none font-bold tracking-[-.04em] text-ink lg:text-[clamp(2.2rem,4vw,3.4rem)]">
+            <span data-count={s.n}>{s.n}</span>{s.unit && <small class="text-[.4em] font-semibold tracking-normal text-brown">{s.unit}</small>}
+          </strong>
+          <span class="mt-1.5 block text-[.84rem] text-muted sm:text-[.9rem]">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

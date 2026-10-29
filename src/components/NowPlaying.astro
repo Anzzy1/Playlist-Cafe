@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import { IMG } from "../data/site";
+
+const tracks = [
+  { name: "Ube Latte", desc: "Creamy milk, authentic ube halaya and ube cloud foam.", price: "₱215" },
+  { name: "Dirty Ube Latte", isNew: true, desc: "Sagada Arabica, authentic ube halaya and ube cloud foam.", price: "₱245" },
+];
+---
+
+<section id="now-playing" class="np section overflow-hidden bg-ink text-white">
+  <div class="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-[clamp(50px,8vw,110px)]">
+    <div class="relative mx-auto aspect-square w-[min(68%,400px)] -translate-x-[14%] lg:mr-[110px] lg:w-[min(100%,420px)] lg:translate-x-0">
+      <div id="npVinyl" class="vinyl absolute top-[5%] left-[28%] z-1 aspect-square w-[90%] animate-vinyl rounded-full" aria-hidden="true">
+        <span class="logo-disc absolute inset-[33%] rounded-full shadow-[0_0_0_3px_#fff] after:absolute after:inset-[44%] after:rounded-full after:bg-ink after:content-['']"></span>
+      </div>
+      <figure class="np-cover relative z-2 size-full overflow-hidden rounded-2xl shadow-[0_30px_60px_-30px_rgb(0_0_0/.9)]">
+        <Image src={IMG.ubeLattes} alt="Ube Latte and Dirty Ube Latte" widths={[320, 600, 840]} sizes="(min-width: 1024px) 420px, 68vw" class="size-full object-cover object-[center_88%]" />
+      </figure>
+    </div>
+
+    <div>
+      <p class="kicker kicker-light" data-reveal><span class="eq"><span></span><span></span><span></span></span> Now playing · New favourites</p>
+      <h2 class="h2 h2-light mb-4" data-reveal>The <em class="serif">Ube</em> Series</h2>
+      <p class="text-[1.02rem] text-muted-light" data-reveal>Our take on a Filipino classic: authentic ube halaya, layered and finished with a soft ube cloud foam.</p>
+
+      <ol class="mt-7 mb-7 border-t border-line-light lg:mt-8">
+        {tracks.map((t, i) => (
+          <li class="grid grid-cols-[28px_1fr_auto] items-center gap-3 border-b border-line-light px-1 py-4 sm:grid-cols-[40px_1fr_auto] sm:gap-4 sm:py-4.5" data-reveal>
+            <span class="serif text-[1.3rem] text-latte">0{i + 1}</span>
+            <div class="min-w-0">
+              <h3 class="flex flex-wrap items-center gap-2 font-display text-[1.08rem] font-semibold tracking-[-.015em] sm:text-[1.15rem]">
+                {t.name}{t.isNew && <span class="rounded-full bg-white px-2 py-0.5 font-sans text-[.6rem] font-bold tracking-[.12em] text-ink uppercase">New</span>}
+              </h3>
+              <p class="text-[.86rem] leading-snug text-muted-light sm:text-[.9rem]">{t.desc}</p>
+            </div>
+            <span class="font-display text-[1.15rem] font-semibold tracking-[-.02em] sm:text-[1.35rem]">{t.price}</span>
+          </li>
+        ))}
+      </ol>
+
+      <button class="btn btn-light w-full sm:w-auto" data-open="coffee">See all drinks <Icon name="arrow-right" /></button>
+    </div>
+  </div>
+</section>
