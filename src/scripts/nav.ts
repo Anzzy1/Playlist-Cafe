@@ -10,16 +10,25 @@ export function initNav() {
   const toTop = $("#toTop");
   const ring = $("#toTopRing");
   const RING = 138.2;
-  let lastY = 0;
+  let lastY = window.scrollY;
+  let down = false;
+  let travel = 0; // distance scrolled in the current direction
 
   const onScroll = () => {
     const y = window.scrollY;
     const vh = window.innerHeight;
     const max = document.documentElement.scrollHeight - vh;
+    const dy = y - lastY;
+    lastY = y;
 
+    // only flip the bar after a deliberate scroll, so small jitters don't make it flicker
+    if (dy !== 0) {
+      if (dy > 0 !== down) { down = dy > 0; travel = 0; }
+      travel += Math.abs(dy);
+    }
     nav.classList.toggle("is-scrolled", y > 20);
-    nav.classList.toggle("is-hidden", y > vh * 0.6 && y > lastY + 2 && mobile.hidden);
-    if (Math.abs(y - lastY) > 2) lastY = y;
+    if (!mobile.hidden || y < vh * 0.6 || (!down && travel > 60)) nav.classList.remove("is-hidden");
+    else if (down && travel > 120) nav.classList.add("is-hidden");
 
     dock.classList.toggle("is-visible", y > vh * 0.55 && mobile.hidden);
     toTop.classList.toggle("is-visible", y > vh * 0.8);

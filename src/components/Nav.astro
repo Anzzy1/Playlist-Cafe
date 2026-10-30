@@ -3,7 +3,7 @@ import Icon from "./Icon.astro";
 import { NAV, SITE } from "../data/site";
 ---
 
-<header id="nav" class="fixed inset-x-0 top-0 z-100 flex h-[calc(var(--nav-h)+env(safe-area-inset-top))] items-center border-b border-transparent bg-white/90 pt-[env(safe-area-inset-top)] backdrop-blur-xl transition-[border-color,transform] duration-500 ease-out-expo [&.is-hidden]:-translate-y-full [&.is-scrolled]:border-line">
+<header id="nav" class="fixed inset-x-0 top-0 z-100 flex h-[calc(var(--nav-h)+env(safe-area-inset-top))] items-center border-b border-transparent bg-white/90 pt-[env(safe-area-inset-top)] backdrop-blur-xl transition-[border-color,transform] duration-700 ease-in-out [&.is-hidden]:-translate-y-full [&.is-scrolled]:border-line">
   <div class="container-x flex items-center justify-between gap-5">
     <a href="#top" class="inline-flex items-center gap-2.5 no-underline" aria-label="Playlist Cafe, back to top">
       <span class="logo-disc size-9 rounded-full lg:size-[38px]" aria-hidden="true"></span>
